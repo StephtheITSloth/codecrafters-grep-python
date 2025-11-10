@@ -1,4 +1,5 @@
 import sys
+import string
 
 # import pyparsing - available if you need it!
 # import lark - available if you need it!
@@ -13,6 +14,16 @@ def match_pattern(input_line, pattern):
     elif pattern == r"\d":
         for char in input_line:
             if char.isdigit():
+                return True
+        return False
+    
+    elif pattern == r"\w":
+        for char in input_line:
+            if char in string.ascii_letters:
+                return True
+            elif char in string.digits:
+                return True
+            elif char == "_":
                 return True
         return False
     else:
