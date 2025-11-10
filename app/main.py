@@ -9,7 +9,7 @@ def match_pattern(input_line, pattern):
         return pattern in input_line
     else:
         raise RuntimeError(f"Unhandled pattern: {pattern}")
-
+ 
 
 def main():
     pattern = sys.argv[2]
