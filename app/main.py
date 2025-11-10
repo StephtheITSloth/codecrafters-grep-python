@@ -9,6 +9,13 @@ def match_pattern(input_line, pattern):
     print('pattern:', pattern)
     if len(pattern) == 1:
         return pattern in input_line
+
+    elif pattern == r"\d":
+        for char in input_line:
+            if char.isdigit():
+                return True
+            else:
+                return False
     else:
         raise RuntimeError(f"Unhandled pattern: {pattern}")
  
