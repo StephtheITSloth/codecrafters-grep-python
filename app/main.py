@@ -5,6 +5,8 @@ import sys
 
 
 def match_pattern(input_line, pattern):
+    print('input_line:', input_line)
+    print('pattern:', pattern)
     if len(pattern) == 1:
         return pattern in input_line
     else:
