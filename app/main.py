@@ -27,6 +27,14 @@ def match_pattern(input_line, pattern):
                 return True
         return False
     
+    elif pattern.startswith('[^') and pattern.endswith(']'):
+        new_pattern = pattern[2:-1]
+        new_pattern = set(new_pattern)
+        for char in input_line:
+            if char not in new_pattern:
+                return True
+        return False
+    
     elif pattern.startswith('[') and pattern.endswith(']'):
         new_pattern = pattern[1:-1]
         print(new_pattern)
@@ -35,13 +43,7 @@ def match_pattern(input_line, pattern):
             if char in new_pattern:
                 return True
         return False
-    elif pattern.startswith('[^') and pattern.endswith(']'):
-        new_pattern = pattern[2:-1]
-        new_pattern = set(new_pattern)
-        for char in input_line:
-            if char not in new_pattern:
-                return True
-        return False
+    
     else:
         raise RuntimeError(f"Unhandled pattern: {pattern}")
  
