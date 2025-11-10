@@ -14,8 +14,7 @@ def match_pattern(input_line, pattern):
         for char in input_line:
             if char.isdigit():
                 return True
-            else:
-                return False
+            return False
     else:
         raise RuntimeError(f"Unhandled pattern: {pattern}")
  
