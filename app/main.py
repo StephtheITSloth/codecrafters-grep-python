@@ -26,6 +26,15 @@ def match_pattern(input_line, pattern):
             elif char == "_":
                 return True
         return False
+    
+    elif pattern.startswith('[') and pattern.endswith(']'):
+        new_pattern = pattern[1:-1]
+        print(new_pattern)
+        new_pattern = set(new_pattern)
+        for char in input_line:
+            if char in new_pattern:
+                return True
+        return False
     else:
         raise RuntimeError(f"Unhandled pattern: {pattern}")
  
