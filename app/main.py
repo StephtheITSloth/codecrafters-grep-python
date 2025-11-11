@@ -50,7 +50,7 @@ def match_pattern(input_line, pattern):
     print('input_line:', new_input_line)
     print('pattern:', new_pattern)
 
-    for idx in len(new_pattern):
+    for idx in range(0, len(new_pattern) - 1):
         print('char class', new_pattern[idx])
         print('input char', input_line[idx])
     
