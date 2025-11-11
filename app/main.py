@@ -4,10 +4,56 @@ import string
 # import pyparsing - available if you need it!
 # import lark - available if you need it!
 
+def digitsCharClass(input_line, pattern):
+    if pattern == r"\d":
+        for char in input_line:
+            if char.isdigit():
+                return True
+        return False
+
+def alnumCharClass(input_line, pattern):
+    if pattern == r"\w":
+        for char in input_line:
+            if char in string.ascii_letters:
+                return True
+            elif char in string.digits:
+                return True
+            elif char == "_":
+                return True
+        return False
+
+def positiveCharClass(input_line, pattern):
+    if pattern.startswith('[') and pattern.endswith(']'):
+        new_pattern = pattern[1:-1]
+        print(new_pattern)
+        new_pattern = set(new_pattern)
+        for char in input_line:
+            if char in new_pattern:
+                return True
+        return False
+    
+def negativeCharClass(input_line, pattern):
+    if pattern.startswith('[^') and pattern.endswith(']'):
+        new_pattern = pattern[2:-1]
+        new_pattern = set(new_pattern)
+        for char in input_line:
+            if char not in new_pattern:
+                return True
+        return False
+    
 
 def match_pattern(input_line, pattern):
-    print('input_line:', input_line)
-    print('pattern:', pattern)
+
+    new_pattern = pattern.split(" ")
+    new_input_line = input_line.split(" ")
+
+    print('input_line:', new_input_line)
+    print('pattern:', new_pattern)
+
+    for idx in new_pattern:
+        print('char class', new_pattern[idx])
+        print('input char', input_line[idx])
+    
     if len(pattern) == 1:
         return pattern in input_line
 
